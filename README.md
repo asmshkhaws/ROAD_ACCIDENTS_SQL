@@ -9,7 +9,7 @@
 ## Introduction
 An SQL analysis of Road Accidents in United Kingdom in the year 2021-2022.
 
-## Requirement
+## Problem Statement
 
 ![Requirement](https://github.com/asmshkhaws/ROAD_ACCIDENTS_SQL/assets/119579424/a9bb674a-78ce-4f66-92b0-2ec43f83d5fa)
 
