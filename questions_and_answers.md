@@ -41,7 +41,9 @@ A. KPI’s
     |CY_Fatal_Casualties|
     |:----|
     |2855|
+
     --Total % of Fatal Casualties taken place
+   
         Select Cast(Cast(Sum(number_of_casualties) As decimal (10,2))*100 
         / (Select Cast(Sum(number_of_casualties) As decimal (10,2)) from road_accident) as decimal(10,2)) as PCT
         From road_accident
@@ -52,7 +54,7 @@ A. KPI’s
     |:----|
     |1.71|
 
-5. Total Serious Casualties taken place CY
+4. Total Serious Casualties taken place CY
    
         Select Sum(number_of_casualties) as CY_Serious_Casualties
         From road_accident
@@ -98,31 +100,32 @@ A. KPI’s
     |:----|
     |84.10|
 
-7. Casualties by Vehicle_Type CY(2022)
+6. Casualties by Vehicle_Type CY(2022)
+   
+   --SELECT DISTINCT vehicle_type FROM road_accident ORDER BY vehicle_type;
 
---SELECT DISTINCT vehicle_type FROM road_accident ORDER BY vehicle_type;
 
-      Select
-      	CASE
-      		When vehicle_type in ('Agricultural vehicle') then 'Agricultural'
-      		When vehicle_type in ('Bus or coach (17 or more pass seats)', 'Minibus (8 - 16 passenger seats)') then 'Bus'
-      		When vehicle_type in ('Car', 'Taxi/Private hire car') then 'Car'
-      		When vehicle_type in ('Motorcycle 125cc and under', 'Motorcycle 50cc and under', 'Motorcycle over 125cc and up to 500cc', 'Motorcycle over 500cc', 'Pedal cycle') then 'Bike'
-      		When vehicle_type in ('Goods 7.5 tonnes mgw and over', 'Goods over 3.5t. and under 7.5t', 'Van / Goods 3.5 tonnes mgw or under') then 'Van'
-      		Else 'Other'
-      	End as vehicle_group,
-      	Sum(number_of_casualties) AS CY_Casualties
-      From road_accident
-      Where YEAR(accident_date) = '2022'
-      Group by
-      	CASE
-      		When vehicle_type in ('Agricultural vehicle') then 'Agricultural'
-      		When vehicle_type in ('Bus or coach (17 or more pass seats)', 'Minibus (8 - 16 passenger seats)') then 'Bus'
-      		When vehicle_type in ('Car', 'Taxi/Private hire car') then 'Car'
-      		When vehicle_type in ('Motorcycle 125cc and under', 'Motorcycle 50cc and under', 'Motorcycle over 125cc and up to 500cc', 'Motorcycle over 500cc', 'Pedal cycle') then 'Bike'
-      		When vehicle_type in ('Goods 7.5 tonnes mgw and over', 'Goods over 3.5t. and under 7.5t', 'Van / Goods 3.5 tonnes mgw or under') then 'Van'
-      		Else 'Other'
-      	End
+          Select
+            CASE
+                When vehicle_type in ('Agricultural vehicle') then 'Agricultural'
+                When vehicle_type in ('Bus or coach (17 or more pass seats)', 'Minibus (8 - 16 passenger seats)') then 'Bus'
+                When vehicle_type in ('Car', 'Taxi/Private hire car') then 'Car'
+                When vehicle_type in ('Motorcycle 125cc and under', 'Motorcycle 50cc and under', 'Motorcycle over 125cc and up to 500cc', 'Motorcycle over 500cc', 'Pedal cycle') then 'Bike'
+                When vehicle_type in ('Goods 7.5 tonnes mgw and over', 'Goods over 3.5t. and under 7.5t', 'Van / Goods 3.5 tonnes mgw or under') then 'Van'
+                Else 'Other'
+            End as vehicle_group,
+            Sum(number_of_casualties) AS CY_Casualties
+          From road_accident
+          Where YEAR(accident_date) = '2022'
+          Group by
+            CASE
+                When vehicle_type in ('Agricultural vehicle') then 'Agricultural'
+                When vehicle_type in ('Bus or coach (17 or more pass seats)', 'Minibus (8 - 16 passenger seats)') then 'Bus'
+                When vehicle_type in ('Car', 'Taxi/Private hire car') then 'Car'
+                When vehicle_type in ('Motorcycle 125cc and under', 'Motorcycle 50cc and under', 'Motorcycle over 125cc and up to 500cc', 'Motorcycle over 500cc', 'Pedal cycle') then 'Bike'
+                When vehicle_type in ('Goods 7.5 tonnes mgw and over', 'Goods over 3.5t. and under 7.5t', 'Van / Goods 3.5 tonnes mgw or under') then 'Van'
+                Else 'Other'
+            End
 
     Output:
     |vehicle_group|CY_Casualties|
