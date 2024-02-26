@@ -62,11 +62,13 @@ A. KPI’s
     |CY_Serious_Casualties|
     |:----|
     |27045|
-    --Total % of Serious Casualties taken place
-    Select Cast(Cast(Sum(number_of_casualties) As decimal (10,2))*100 
-    / (Select Cast(Sum(number_of_casualties) As decimal (10,2)) from road_accident) as decimal(10,2)) as PCT
-    From road_accident
-    Where accident_severity = 'Serious'
+
+   --Total % of Serious Casualties taken place
+   
+        Select Cast(Cast(Sum(number_of_casualties) As decimal (10,2))*100 
+        / (Select Cast(Sum(number_of_casualties) As decimal (10,2)) from road_accident) as decimal(10,2)) as PCT
+        From road_accident
+        Where accident_severity = 'Serious'
 
     Output:
     |PCT|
@@ -83,11 +85,13 @@ A. KPI’s
     |CY_Slight_Casualties|
     |:----|
     |165837|
-    --Total % of Slight Casualties taken place
-    Select Cast(Cast(Sum(number_of_casualties) As decimal (10,2))*100 
-    / (Select Cast(Sum(number_of_casualties) As decimal (10,2)) from road_accident) as decimal(10,2)) as PCT
-    From road_accident
-    Where accident_severity = 'Slight'
+
+   --Total % of Slight Casualties taken place
+   
+        Select Cast(Cast(Sum(number_of_casualties) As decimal (10,2))*100 
+        / (Select Cast(Sum(number_of_casualties) As decimal (10,2)) from road_accident) as decimal(10,2)) as PCT
+        From road_accident
+        Where accident_severity = 'Slight'
 
     Output:
     |PCT|
