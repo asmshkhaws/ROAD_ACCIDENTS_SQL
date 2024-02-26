@@ -9,7 +9,7 @@
 
 A. KPI’s
 
-1. Total Casualties CY:
+1. Total Casualties Current Year(2022):
     
         Select sum(number_of_casualties) as CY_Casualties
         From road_accident
@@ -20,7 +20,7 @@ A. KPI’s
     |:----|
     |195737|
 
-2. CY Accidents
+2. Current Year(2022) Accidents
 
         Select Count(Distinct accident_index) as CY_Accidents
         From road_accident
@@ -31,7 +31,7 @@ A. KPI’s
     |:----|
     |144419|
 
-3. Total Fatal Casualties taken place CY
+3. Total Fatal Casualties taken place Current Year(2022)
    
         Select Sum(number_of_casualties) as CY_Fatal_Casualties
         From road_accident
@@ -54,7 +54,7 @@ A. KPI’s
     |:----|
     |1.71|
 
-4. Total Serious Casualties taken place CY
+4. Total Serious Casualties taken place Current Year(2022)
    
         Select Sum(number_of_casualties) as CY_Serious_Casualties
         From road_accident
@@ -77,7 +77,7 @@ A. KPI’s
     |:----|
     |14.19|
 
-5. Total Slight Casualties taken place CY
+5. Total Slight Casualties taken place Current Year(2022)
    
         Select Sum(number_of_casualties) as CY_Slight_Casualties
         From road_accident
@@ -100,7 +100,7 @@ A. KPI’s
     |:----|
     |84.10|
 
-6. Casualties by Vehicle_Type CY(2022)
+6. Casualties by Vehicle_Type Current Year(2022)
    
    --SELECT DISTINCT vehicle_type FROM road_accident ORDER BY vehicle_type;
 
@@ -137,7 +137,7 @@ A. KPI’s
     |Van|15905|
     |Bus|6573|
 
-7. Monthly Casualties in CY(2022)
+7. Monthly Casualties in Current Year(2022)
    
         Select DATENAME(Month, accident_date) as Month_Name, Sum(Number_of_casualties) AS CY_Casualties
         From road_accident
@@ -161,7 +161,7 @@ A. KPI’s
     |June|17230|
 
 
--- Monthly Casualties in PY(2021)
+-- Monthly Casualties in Previous Year(2021)
 
         Select DATENAME(Month, accident_date) as Month_Name, Sum(Number_of_casualties) AS PY_Casualties
         From road_accident
@@ -184,7 +184,7 @@ A. KPI’s
   |May|18852|
   |September|18456|
 
-8. Casualties by Road_Type in CY(2022)
+8. Casualties by Road_Type in Current Year(2022)
    
         Select road_type, Sum(number_of_casualties) as CY_Casualties
         From road_accident
@@ -200,7 +200,7 @@ A. KPI’s
   |One way street|3499|
   |Single carriageway|144653|
 
-9. % Casualties by Urban/Rural in CY(2022)
+9. % Casualties by Urban/Rural in Current Year(2022)
 
         Select urban_or_rural_area, Cast(Cast(Sum(number_of_casualties) as decimal (10,2))*100
         /(Select Cast(Sum(number_of_casualties)as decimal (10,2)) from road_accident) as decimal (10,2)) as CY_Casualties
@@ -214,7 +214,7 @@ A. KPI’s
   |Rural|17.82|
   |Urban|29.02|
 
-10. % Casualties by Light Condition in CY(2022)
+10. % Casualties by Light Condition in Current Year(2022)
     
 --Select Distinct light_conditions from road_accident order by light_conditions
 
